@@ -1,25 +1,21 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from produtos.models import Produto
 
-# Create your views here.
 def listagem_produtos(request):
+    produtos = Produto.objects.all()
     produtos_dos_vendedores = [{
-        'vendedor': {'nome': 'Joseph Climber'},
-        'produtos': [
-            {'nome': 'Uva', 'preco': 12}, 
-            {'nome': 'Melância', 'preco': 10},
-            {'nome': 'Banana', 'preco': 15},
-        ]
-    },
-    {
-       'vendedor': {'nome': 'John Pay Pay'},
-       'produtos': [
-            {'nome': 'Carro', 'preco': 45000}, 
-            {'nome': 'Moto', 'preco': 1000},
-            {'nome': 'Bike', 'preco': 1500},
-        ]
-    }
-    ]
+        'vendedor': {'nome' : 'Joseph Climber'},
+        'produtos' : produtos    
+    }]
     context = {'produtos_dos_vendedores': produtos_dos_vendedores}
     return render(request, './templates/listagem_produtos.html', context)
+
+def detalhamento_produto(request, id):
+    produto = get_object_or_404(Produto, pk=id)
+    
+    context = {
+        'produto' : produto
+    }
+    return render(request, 'templates/detalhamento_produto.html', context)
 
 
