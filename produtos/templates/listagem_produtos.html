@@ -1,7 +1,7 @@
 {% extends 'templates/base.html' %}
 
 {% block conteudo %}
-    Listagem de Produtos <a href = '#'> Novo produto </a>
+    Listagem de Produtos <a href = 'cadastrar'> Novo produto </a>
     {% for produtos_do_vendedor in produtos_dos_vendedores %}
         <div>
             <h3>{{ produtos_do_vendedor.vendedor.nome }}</h3>
