@@ -1,6 +1,8 @@
 {% extends 'templates/base.html' %}
 
 {% block conteudo %}
+   
+
     Listagem de produtos <a href="cadastrar">Novo produto</a>
     {% for produtos_do_vendedor in produtos_dos_vendedores %}
         <div>
@@ -8,7 +10,13 @@
         </div>
         <ul>
         {% for produto in produtos_do_vendedor.produtos %}
-            <li>{{ produto.nome }} - R$ {{ produto.preco }}</li> <a href="{{ produto.id }}">Ver detalhes</a>
+        <li>
+            {{ produto.nome }} - R$ {{ produto.preco }}
+        </li> 
+        <a href="{{ produto.id }}">Ver detalhes</a>
+        {% if produto.imagem%}
+            <img src={{ produto.imagem.url }} class='imagem-produto'/>
+        {% endif %}     
         {% endfor %}
         </ul>
     {% endfor %}

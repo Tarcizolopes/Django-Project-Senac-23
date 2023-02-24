@@ -10,7 +10,7 @@ def listagem_produtos(request):
         produtos_do_vendedor = anunciante.produto_set.filter(tipo=TIPO_PRODUTO, excluido=False)
         if produtos_do_vendedor:
             produtos_dos_vendedores.append({
-                    'vendedor' : {'Nome' : anunciante.nome},
+                    'vendedor' : {'nome' : anunciante.nome},
                     'produtos' : produtos_do_vendedor
                 }) 
     context = {'produtos_dos_vendedores': produtos_dos_vendedores }
