@@ -22,10 +22,10 @@ def listagem_servicos(request):
     servicos_dos_vendedores = []
     for anunciante in anunciantes:
         servicos_do_vendedor = anunciante.produto_set.filter(tipo=TIPO_SERVICO, excluido=False)
-        if servicos_dos_vendedores:
+        if servicos_do_vendedor:
             servicos_dos_vendedores.append({
                 'vendedor': {'nome': anunciante.nome},
-                'servicos': servicos_dos_vendedores
+                'servicos': servicos_do_vendedor
             })
     context = {'servicos_dos_vendedores': servicos_dos_vendedores }
     return render(request, 'templates/listagem_servicos.html', context)
