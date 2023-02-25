@@ -41,7 +41,8 @@ def detalhamento_produto(request, id):
 
 def cadastro_produto(request):
     if request.method == 'POST':
-        form = ProdutoModelForm(request.POST)
+        print(request.FILES)
+        form = ProdutoModelForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return HttpResponseRedirect('/produtos/')
@@ -87,7 +88,7 @@ def excluir_produto(request, id):
 
 def cadastro_servico(request):
     if request.method == 'POST':
-        form = ServicoModelForm(request.POST)
+        form = ServicoModelForm(request.POST, request.FILES)
         if form.is_valid():
             produto = form.save(commit=False)
             produto.tipo = TIPO_SERVICO

@@ -1,4 +1,5 @@
 {% extends 'templates/base.html' %}
+{% load static %}
 
 {% block conteudo %}
    
@@ -16,6 +17,8 @@
         <a href="{{ produto.id }}">Ver detalhes</a>
         {% if produto.imagem%}
             <img src={{ produto.imagem.url }} class='imagem-produto'/>
+        {% else %}
+            <img src={% static 'imagens/defaut.jpg' %} class="imagem-produto"/>
         {% endif %}     
         {% endfor %}
         </ul>
